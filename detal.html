@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>detail</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <div style="margin: auto;">
+        <h1 id="title"></h1>
+      </div>
+      <div id="slug"></div>
+
+      <img
+        id="img"
+        src="https://images.viblo.asia/e6de922a-b90d-48b5-a38e-ad43a33cf833.png"
+        alt=""
+        width="690"
+        height="579"
+      />
+      <div id="category_id"></div>
+      <div id="published_at"></div>
+      <div id="system"></div>
+      <div id="transliterated"></div>
+      <div id="category"></div>
+
+      <div id="content" style="font-size: xx-large"></div>
+    </div>
+
+    <script>
+      $(document).ready(() => {
+        $.get(
+          "https://844deb07bd27403da728d3d434ab3268.api.mockbin.io/",
+          (data, textStatus, xhr) => {
+            if (xhr.status === 200) {
+              showData(data);
+            }
+          }
+        );
+        function showData(ojb) {
+          const title = document.getElementById("title");
+          title.innerText = ojb.title;
+
+          const slug = document.getElementById("slug");
+          slug.innerText = ojb.slug;
+
+          const categoryId = document.getElementById("category_id");
+          categoryId.innerText = ojb.category_id;
+
+          const published = document.getElementById("published_at");
+          published.innerText = ojb.published_at;
+
+          const system = document.getElementById("system");
+          system.innerText = ojb.system;
+
+          const transliterated = document.getElementById("transliterated");
+          transliterated.innerText = ojb.transliterated;
+
+          const category = document.getElementById("category");
+          category.innerText = ojb.category;
+
+          const content = document.getElementById("content");
+          content.innerText = ojb.content;
+        }
+      });
+    </script>
+  </body>
+</html>
